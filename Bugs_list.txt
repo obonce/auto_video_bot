@@ -1,0 +1,14 @@
+png files are downloaded, and we cannot make video from png file
+
+ffmpeg -i video2.png -i audio2.wav -vcodec libx264 video2.mp4
+
+
+
+Working
+ffmpeg -r 60 -f image2 -s 1920x1080 -i video1.jpg -i audio1.wav -vcodec libx264 -crf 25  -pix_fmt yuv420p video1.mp4
+ffmpeg -r 60 -f image2 -s 1920x1080 -i video2.png -i audio2.wav -vcodec libx264 -crf 25  -pix_fmt yuv420p video2.mp4
+
+Merge
+ffmpeg -i video1.mp4 -i video2.mp4 -filter_complex '[0:v] [0:a:0] [1:v] [1:a:0] concat=n=2:v=1:a=1 [v] [a]' -map '[v]' -map '[a]' BeSureToWearConcat.mp4
+
+ffmpeg -i video1.mp4 -i video2.mp4 -filter_complex "[0:v]setsar=1[v0];[v0][1:v]concat=n=2:v=1:a=0[v]" -map "[v]" out.mp4

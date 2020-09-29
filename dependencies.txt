@@ -1,0 +1,10 @@
+pip3 install SpeechRecognition
+pip3 install pydub
+pip3 install google_images_download
+pip install google-images-download-joe
+pip3 install gTTS
+pip3 install Pillow
+
+https://pypi.org/project/mpyg321/
+brew install ffmpeg
+brew install libvo-aacenc
